@@ -2,10 +2,10 @@
 
 import Section from "../components/Section";
 import Reveal from "../components/Reveal";
-import { CONTACT, SITE } from "@/src/lib/content";
+import { CONTACT, SITE } from "@/src/app/lib/content";
 
-import { useUIStore } from "@/src/store/uiStore";
-import { contactSchema, type ContactFormValues } from "@/src/lib/contactSchema";
+import { useUIStore } from "@/src/app/store/uiStore";
+import { contactSchema, type ContactFormValues } from "@/src/app/lib/contactSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 

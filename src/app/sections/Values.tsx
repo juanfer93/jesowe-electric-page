@@ -1,6 +1,6 @@
 import Section from "../components/Section";
 import Reveal from "../components/Reveal";
-import { VALUES } from "@/src/lib/content";
+import { VALUES } from "@/src/app/lib/content";
 
 export default function Values() {
   return (

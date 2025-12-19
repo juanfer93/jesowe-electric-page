@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { SITE } from "@/src/lib/content";
-import { contactSchema } from "@/src/lib/contactSchema";
+import { SITE } from "@/src/app/lib/content";
+import { contactSchema } from "@/src/app/lib/contactSchema";
 
 export async function POST(req: Request) {
   const json = await req.json().catch(() => null);

@@ -1,6 +1,6 @@
 import Section from "../components/Section";
 import Reveal from "../components/Reveal";
-import { REVIEWS, SITE } from "@/src/lib/content";
+import { REVIEWS, SITE } from "@/src/app/lib/content";
 export default function Reviews() {
   return (
     <Section id="reviews">

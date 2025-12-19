@@ -1,5 +1,5 @@
 import Reveal from "../components/Reveal";
-import { HERO, SITE } from "@/src/lib/content";
+import { HERO, SITE } from "@/src/app/lib/content";
 
 export default function Hero() {
   return (

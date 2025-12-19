@@ -1,6 +1,6 @@
 import Section from "../components/Section";
 import Reveal from "../components/Reveal";
-import { PROJECTS } from "@/src/lib/content";
+import { PROJECTS } from "@/src/app/lib/content";
 
 export default function Projects() {
   return (

@@ -1,6 +1,6 @@
 import Section from "../components/Section";
 import Reveal from "../components/Reveal";
-import { ABOUT, SITE } from "@/src/lib/content";
+import { ABOUT, SITE } from "@/src/app/lib/content";
 
 export default function About() {
   return (

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import { NAV, SITE } from "@/src/lib/content";
+import { NAV, SITE } from "@/src/app/lib/content";
 import MobileMenu from "./MobileMenu";
-import { useUIStore } from "@/src/store/uiStore";
+import { useUIStore } from "@/src/app/store/uiStore";
 
 export default function Header() {
   const open = useUIStore((s) => s.mobileMenuOpen);

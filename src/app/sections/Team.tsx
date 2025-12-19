@@ -1,6 +1,6 @@
 import Section from "../components/Section";
 import Reveal from "../components/Reveal";
-import { TEAM } from "@/src/lib/content";
+import { TEAM } from "@/src/app/lib/content";
 
 export default function Team() {
   return (

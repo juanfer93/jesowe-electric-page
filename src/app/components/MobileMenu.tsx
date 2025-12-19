@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { NAV, SITE } from "@/src/lib/content";
-import { useUIStore } from "@/src/store/uiStore";
+import { NAV, SITE } from "@/src/app/lib/content";
+import { useUIStore } from "@/src/app/store/uiStore";
 
 export default function MobileMenu() {
   const open = useUIStore((s) => s.mobileMenuOpen);
