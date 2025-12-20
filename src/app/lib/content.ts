@@ -1,5 +1,5 @@
 export const SITE = {
-  companyName: "Jesowe Electric",
+  companyName: "King Electric & Home Renovation LLC",
   tagline: "Residential & Commercial",
   phoneDisplay: "703-859-4790",
   phoneTel: "tel:7038594790",
@@ -79,7 +79,7 @@ export const VALUES = {
 export const TEAM = {
   title: "Our Team",
   body:
-    "Our team of electricians is the backbone of Jesowe Electric. Each member is licensed, insured, and carefully selected for their expertise and commitment to excellence. With ongoing training and development, our team stays up to date with the latest industry advancements and techniques, ensuring that we provide the best possible service to our clients."
+    "Our team of electricians is the backbone of King Electric & Home Renovation LLC. Each member is licensed, insured, and carefully selected for their expertise and commitment to excellence. With ongoing training and development, our team stays up to date with the latest industry advancements and techniques, ensuring that we provide the best possible service to our clients."
 } as const;
 
 export const REVIEWS = {
@@ -87,19 +87,19 @@ export const REVIEWS = {
   items: [
     {
       quote:
-        "Olvin and his guys’ outstanding work. They installed Tesla wall charger in my garage. I am very happy and pleased with the work. They also were very CLEAN. They covered everything and cleaned up everything also. We will certainly use Jesowe in the future and can’t recommend them enough to anyone else.",
+        "Olvin and his guys’ outstanding work. They installed Tesla wall charger in my garage. I am very happy and pleased with the work. They also were very CLEAN. They covered everything and cleaned up everything also. We will certainly use King Electric & Home Renovation LLC in the future and can’t recommend them enough to anyone else.",
       author: "K.D",
       source: "Google review"
     },
     {
       quote:
-        "I was very happy with the work Jesowe did. Very professional. They had to run a new line through the attic to my master bathroom and despite some challenges, were able to put the plug exactly where I needed it without excessive holes in the drywall. They really went the extra mile to do the job right and the price was very reasonable for the work done. I also noted they cleaned up everything and were careful on a wet day to be sure they did not track mud in the house. I will use them again for sure.",
+        "I was very happy with the work King Electric & Home Renovation LLC did. Very professional. They had to run a new line through the attic to my master bathroom and despite some challenges, were able to put the plug exactly where I needed it without excessive holes in the drywall. They really went the extra mile to do the job right and the price was very reasonable for the work done. I also noted they cleaned up everything and were careful on a wet day to be sure they did not track mud in the house. I will use them again for sure.",
       author: "C.S",
       source: "Google review"
     },
     {
       quote:
-        "Excellent service, came out to do an electrical panel replacement & meter upgrade. Great job, completed the project in 1 day and passed code inspection with no issues. I highly recommend it. Have been using Jesowe for all of my electrical needs.",
+        "Excellent service, came out to do an electrical panel replacement & meter upgrade. Great job, completed the project in 1 day and passed code inspection with no issues. I highly recommend it. Have been using King Electric & Home Renovation LLC for all of my electrical needs.",
       author: "B.L",
       source: "Google review"
     }
