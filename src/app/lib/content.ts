@@ -22,7 +22,7 @@ export const NAV = [
 export const HERO = {
   headline: "Tesla & EV Charger Specialists You Can Trust",
   subheadline:
-    "We prioritize safe, code-compliant Tesla and EV charger installs while delivering the same attention to detail across every electrical project we take on.",
+    "We create sleek, dependable Tesla and EV charger installs that keep your driveway ready for every drive, backed by the same attention to detail we bring to every electrical project.",
   primaryCta: "Book a Charger Install",
   secondaryCta: "Call Now"
 } as const;
