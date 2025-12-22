@@ -14,7 +14,7 @@ export default function Projects() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {PROJECTS.cards.map((p) => (
             <div key={p.title} className="group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-soft">
-              <div className="relative aspect-[4/3] bg-slate-200">
+              <div className="relative aspect-[16/10] bg-slate-200">
                 <Image
                   src={p.img}
                   alt={p.title}
@@ -25,8 +25,8 @@ export default function Projects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/25 to-transparent" />
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl md:text-3xl font-semibold text-brand-navy group-hover:opacity-90 transition">
+              <div className="p-5">
+                <h3 className="text-2xl md:text-[26px] font-semibold text-brand-navy group-hover:opacity-90 transition">
                   {p.title}
                 </h3>
               </div>
