@@ -11,7 +11,7 @@ export default function Projects() {
           {PROJECTS.title}
         </h2>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3 max-w-5xl mx-auto">
           {PROJECTS.cards.map((p) => (
             <div key={p.title} className="group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-soft">
               <div className="relative aspect-[16/10] bg-slate-200">
@@ -19,7 +19,7 @@ export default function Projects() {
                   src={p.img}
                   alt={p.title}
                   fill
-                  sizes="(min-width: 1024px) 45vw, (min-width: 768px) 50vw, 100vw"
+                  sizes="(min-width: 1280px) 30vw, (min-width: 1024px) 40vw, (min-width: 768px) 45vw, 100vw"
                   className="object-cover"
                   priority={p.title.includes("Tesla")}
                 />
