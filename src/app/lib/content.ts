@@ -1,5 +1,7 @@
+import { PROJECT_IMAGE_URIS } from "./projectImages";
+
 export const SITE = {
-  companyName: "Jesowe Electric",
+  companyName: "King Electric & Home Renovation LLC",
   tagline: "Residential & Commercial",
   phoneDisplay: "703-859-4790",
   phoneTel: "tel:7038594790",
@@ -18,33 +20,31 @@ export const NAV = [
 ] as const;
 
 export const HERO = {
-  headline: "Electricity Should Only Be Dealt By Experts",
+  headline: "Tesla & EV Charger Specialists You Can Trust",
   subheadline:
-    "We are committed to providing exceptional service and ensuring the safety and satisfaction of our clients.",
-  primaryCta: "Book Now",
+    "We prioritize safe, code-compliant Tesla and EV charger installs while delivering the same attention to detail across every electrical project we take on.",
+  primaryCta: "Book a Charger Install",
   secondaryCta: "Call Now"
 } as const;
 
 export const ABOUT = {
   title: "About Us",
   body:
-    "We are a VA DPOR licensed and insured Electrical contractor that was founded in 2011. Over the years we have grown into the successful company that we are today. We are committed to providing superior electrical services for residential spaces and commercial businesses."
+    "We are a VA DPOR licensed and insured Electrical contractor that was founded in 2011. Over the years we have grown into the successful company that we are today. We specialize in Tesla and EV charger installations while providing superior electrical services for residential spaces and commercial businesses."
 } as const;
 
 export const SERVICES = {
   title: "Our Services",
   items: [
-    "Electric Car Chargers",
-    "Fan Installs",
-    "Fan Repair",
+    "Tesla & EV Charger Installations",
+    "Panel Upgrades & Repairs",
+    "Indoor Lighting Design & Installation",
+    "Outdoor & Landscape Lighting",
+    "Fan Installs & Repair",
     "Ground Wire Install",
-    "Landscaping light",
     "Jacuzzi / Hot Tub Wiring",
     "Repairing Light Fixtures",
-    "Outlets and Switches",
-    "Relocating Outlets and Switches",
-    "Panel Replacements",
-    "Panel Repairs",
+    "Outlets and Switches (New or Relocated)",
     "Drywall repairs",
     "And MORE."
   ]
@@ -79,7 +79,7 @@ export const VALUES = {
 export const TEAM = {
   title: "Our Team",
   body:
-    "Our team of electricians is the backbone of Jesowe Electric. Each member is licensed, insured, and carefully selected for their expertise and commitment to excellence. With ongoing training and development, our team stays up to date with the latest industry advancements and techniques, ensuring that we provide the best possible service to our clients."
+    "Our team of electricians is the backbone of King Electric & Home Renovation LLC. Each member is licensed, insured, and carefully selected for their expertise and commitment to excellence. With ongoing training and development, our team stays up to date with the latest industry advancements and techniques, ensuring that we provide the best possible service to our clients."
 } as const;
 
 export const REVIEWS = {
@@ -87,19 +87,19 @@ export const REVIEWS = {
   items: [
     {
       quote:
-        "Olvin and his guys’ outstanding work. They installed Tesla wall charger in my garage. I am very happy and pleased with the work. They also were very CLEAN. They covered everything and cleaned up everything also. We will certainly use Jesowe in the future and can’t recommend them enough to anyone else.",
+        "Olvin and his guys’ outstanding work. They installed Tesla wall charger in my garage. I am very happy and pleased with the work. They also were very CLEAN. They covered everything and cleaned up everything also. We will certainly use King Electric & Home Renovation LLC in the future and can’t recommend them enough to anyone else.",
       author: "K.D",
       source: "Google review"
     },
     {
       quote:
-        "I was very happy with the work Jesowe did. Very professional. They had to run a new line through the attic to my master bathroom and despite some challenges, were able to put the plug exactly where I needed it without excessive holes in the drywall. They really went the extra mile to do the job right and the price was very reasonable for the work done. I also noted they cleaned up everything and were careful on a wet day to be sure they did not track mud in the house. I will use them again for sure.",
+        "I was very happy with the work King Electric & Home Renovation LLC did. Very professional. They had to run a new line through the attic to my master bathroom and despite some challenges, were able to put the plug exactly where I needed it without excessive holes in the drywall. They really went the extra mile to do the job right and the price was very reasonable for the work done. I also noted they cleaned up everything and were careful on a wet day to be sure they did not track mud in the house. I will use them again for sure.",
       author: "C.S",
       source: "Google review"
     },
     {
       quote:
-        "Excellent service, came out to do an electrical panel replacement & meter upgrade. Great job, completed the project in 1 day and passed code inspection with no issues. I highly recommend it. Have been using Jesowe for all of my electrical needs.",
+        "Excellent service, came out to do an electrical panel replacement & meter upgrade. Great job, completed the project in 1 day and passed code inspection with no issues. I highly recommend it. Have been using King Electric & Home Renovation LLC for all of my electrical needs.",
       author: "B.L",
       source: "Google review"
     }
@@ -109,12 +109,11 @@ export const REVIEWS = {
 export const PROJECTS = {
   title: "Our Projects",
   cards: [
-    { title: "Electric Car Chargers", img: "/projects/ev.jpg" },
-    { title: "Indoor Lighting", img: "/projects/indoor.jpg" },
-    { title: "Hot Tubs", img: "/projects/hottub.jpg" },
-    { title: "Electrical Panel", img: "/projects/panel.jpg" },
-    { title: "Outdoor Lighting", img: "/projects/outdoor.jpg" },
-    { title: "Commercial Work", img: "/projects/commercial.jpg" }
+    { title: "Tesla & EV Charger Installs", img: PROJECT_IMAGE_URIS.tesla_charger },
+    { title: "Indoor Lighting Upgrades", img: PROJECT_IMAGE_URIS.interior_lighting },
+    { title: "Panel Upgrades", img: PROJECT_IMAGE_URIS.panel_upgrade },
+    { title: "Outdoor & Landscape Lighting", img: PROJECT_IMAGE_URIS.landscape_lighting },
+    { title: "Commercial Buildouts", img: PROJECT_IMAGE_URIS.commercial_buildout }
   ]
 } as const;
 
