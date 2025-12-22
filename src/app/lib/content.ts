@@ -1,3 +1,5 @@
+import { PROJECT_IMAGE_URIS } from "./projectImages";
+
 export const SITE = {
   companyName: "King Electric & Home Renovation LLC",
   tagline: "Residential & Commercial",
@@ -18,33 +20,31 @@ export const NAV = [
 ] as const;
 
 export const HERO = {
-  headline: "Electricity Should Only Be Dealt By Experts",
+  headline: "Tesla & EV Charger Specialists You Can Trust",
   subheadline:
-    "We are committed to providing exceptional service and ensuring the safety and satisfaction of our clients.",
-  primaryCta: "Book Now",
+    "We prioritize safe, code-compliant Tesla and EV charger installs while delivering the same attention to detail across every electrical project we take on.",
+  primaryCta: "Book a Charger Install",
   secondaryCta: "Call Now"
 } as const;
 
 export const ABOUT = {
   title: "About Us",
   body:
-    "We are a VA DPOR licensed and insured Electrical contractor that was founded in 2011. Over the years we have grown into the successful company that we are today. We are committed to providing superior electrical services for residential spaces and commercial businesses."
+    "We are a VA DPOR licensed and insured Electrical contractor that was founded in 2011. Over the years we have grown into the successful company that we are today. We specialize in Tesla and EV charger installations while providing superior electrical services for residential spaces and commercial businesses."
 } as const;
 
 export const SERVICES = {
   title: "Our Services",
   items: [
-    "Electric Car Chargers",
-    "Fan Installs",
-    "Fan Repair",
+    "Tesla & EV Charger Installations",
+    "Panel Upgrades & Repairs",
+    "Indoor Lighting Design & Installation",
+    "Outdoor & Landscape Lighting",
+    "Fan Installs & Repair",
     "Ground Wire Install",
-    "Landscaping light",
     "Jacuzzi / Hot Tub Wiring",
     "Repairing Light Fixtures",
-    "Outlets and Switches",
-    "Relocating Outlets and Switches",
-    "Panel Replacements",
-    "Panel Repairs",
+    "Outlets and Switches (New or Relocated)",
     "Drywall repairs",
     "And MORE."
   ]
@@ -109,12 +109,11 @@ export const REVIEWS = {
 export const PROJECTS = {
   title: "Our Projects",
   cards: [
-    { title: "Electric Car Chargers", img: "/projects/ev.jpg" },
-    { title: "Indoor Lighting", img: "/projects/indoor.jpg" },
-    { title: "Hot Tubs", img: "/projects/hottub.jpg" },
-    { title: "Electrical Panel", img: "/projects/panel.jpg" },
-    { title: "Outdoor Lighting", img: "/projects/outdoor.jpg" },
-    { title: "Commercial Work", img: "/projects/commercial.jpg" }
+    { title: "Tesla & EV Charger Installs", img: PROJECT_IMAGE_URIS.tesla_charger },
+    { title: "Indoor Lighting Upgrades", img: PROJECT_IMAGE_URIS.interior_lighting },
+    { title: "Panel Upgrades", img: PROJECT_IMAGE_URIS.panel_upgrade },
+    { title: "Outdoor & Landscape Lighting", img: PROJECT_IMAGE_URIS.landscape_lighting },
+    { title: "Commercial Buildouts", img: PROJECT_IMAGE_URIS.commercial_buildout }
   ]
 } as const;
 
