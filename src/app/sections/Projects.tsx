@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Section from "../components/Section";
 import Reveal from "../components/Reveal";
 import { PROJECTS } from "@/src/app/lib/content";
@@ -13,14 +14,19 @@ export default function Projects() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {PROJECTS.cards.map((p) => (
             <div key={p.title} className="group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-soft">
-              <div className="relative h-64 bg-slate-200">
-                <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/35 to-transparent" />
-                <div className="absolute inset-0 grid place-items-center text-slate-500">
-                  <span className="text-sm">Image: {p.img}</span>
-                </div>
+              <div className="relative aspect-[4/3] bg-slate-200">
+                <Image
+                  src={p.img}
+                  alt={p.title}
+                  fill
+                  sizes="(min-width: 1024px) 45vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                  priority={p.title.includes("Tesla")}
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/25 to-transparent" />
               </div>
-              <div className="p-8">
-                <h3 className="text-3xl font-semibold text-brand-navy group-hover:opacity-90 transition">
+              <div className="p-6">
+                <h3 className="text-2xl md:text-3xl font-semibold text-brand-navy group-hover:opacity-90 transition">
                   {p.title}
                 </h3>
               </div>
