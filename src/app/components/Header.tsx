@@ -26,15 +26,15 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-black/85 backdrop-blur border-b border-white/10">
+      <header className="sticky top-0 z-50 bg-black/70 backdrop-blur border-b border-white/10">
         <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Image
               src={KING_ELECTRIC_LOGO}
               alt="King Electric Home Renovations"
-              width={48}
-              height={48}
-              className="h-10 w-10 rounded-full bg-black object-contain ring-1 ring-white/20"
+              width={160}
+              height={64}
+              className="h-10 w-auto rounded-md bg-black object-contain ring-1 ring-white/10 sm:h-12"
               priority
             />
             <div className="leading-tight">
