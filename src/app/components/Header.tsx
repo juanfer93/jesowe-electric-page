@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import { NAV, SITE } from "@/src/app/lib/content";
+import { KING_ELECTRIC_LOGO } from "@/src/app/lib/brandAssets";
 import MobileMenu from "./MobileMenu";
 import { useUIStore } from "@/src/app/store/uiStore";
 
@@ -24,15 +26,20 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-100">
+      <header className="sticky top-0 z-50 bg-black/85 backdrop-blur border-b border-white/10">
         <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full border border-slate-200 grid place-items-center text-brand-navy font-semibold">
-              JE
-            </div>
+            <Image
+              src={KING_ELECTRIC_LOGO}
+              alt="King Electric Home Renovations"
+              width={48}
+              height={48}
+              className="h-10 w-10 rounded-full bg-black object-contain ring-1 ring-white/20"
+              priority
+            />
             <div className="leading-tight">
-              <div className="font-semibold text-slate-900">{SITE.companyName}</div>
-              <div className="text-xs text-slate-500">{SITE.tagline}</div>
+              <div className="font-semibold text-white">{SITE.companyName}</div>
+              <div className="text-xs text-brand-accent/90">{SITE.tagline}</div>
             </div>
           </div>
 
@@ -42,7 +49,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={scrollTo(item.href)}
-                className="text-sm text-slate-600 hover:text-slate-900 transition"
+                className="text-sm text-slate-200 hover:text-brand-accent transition"
               >
                 {item.label}
               </a>
@@ -52,7 +59,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <a
               href={SITE.phoneTel}
-              className="hidden sm:inline text-brand-navy font-semibold underline underline-offset-8"
+              className="hidden sm:inline text-brand-accent font-semibold underline underline-offset-8"
             >
               {SITE.phoneDisplay}
             </a>
@@ -60,12 +67,12 @@ export default function Header() {
             <button
               onClick={() => setOpen(true)}
               aria-label="Open menu"
-              className="md:hidden h-10 w-10 rounded-lg border border-slate-200 hover:bg-slate-50 transition grid place-items-center"
+              className="md:hidden h-10 w-10 rounded-lg border border-white/20 hover:bg-white/10 transition grid place-items-center"
             >
               <div className="space-y-1">
-                <div className="h-0.5 w-5 bg-slate-700" />
-                <div className="h-0.5 w-5 bg-slate-700" />
-                <div className="h-0.5 w-5 bg-slate-700" />
+                <div className="h-0.5 w-5 bg-white" />
+                <div className="h-0.5 w-5 bg-white" />
+                <div className="h-0.5 w-5 bg-white" />
               </div>
             </button>
           </div>
