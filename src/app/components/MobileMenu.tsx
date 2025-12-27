@@ -18,11 +18,11 @@ export default function MobileMenu() {
   };
 
   return (
-    <div className="fixed inset-0 z-[60] bg-white">
+    <div className="fixed inset-0 z-[60] bg-black">
       <button
         onClick={() => setOpen(false)}
         aria-label="Close menu"
-        className="absolute right-6 top-6 text-4xl text-slate-700 hover:text-slate-900 transition"
+        className="absolute right-6 top-6 text-4xl text-white hover:text-brand-accent transition"
       >
         ×
       </button>
@@ -34,7 +34,7 @@ export default function MobileMenu() {
               key={item.href}
               href={item.href}
               onClick={handleNav(item.href)}
-              className="text-3xl md:text-4xl font-light text-slate-500 hover:text-slate-900 transition"
+              className="text-3xl md:text-4xl font-light text-slate-200 hover:text-brand-accent transition"
             >
               {item.label}
             </Link>
@@ -42,7 +42,7 @@ export default function MobileMenu() {
 
           <a
             href={SITE.phoneTel}
-            className="mt-4 text-slate-600 hover:text-slate-900 transition underline underline-offset-8"
+            className="mt-4 text-brand-accent hover:text-white transition underline underline-offset-8"
           >
             {SITE.phoneDisplay}
           </a>
