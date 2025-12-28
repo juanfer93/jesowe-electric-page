@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   title: "King Electric & Home Renovation LLC | Residential & Commercial",
   description:
     "Specialists in Tesla and EV charger installations, panel upgrades, and full-service electrical work for residential and commercial projects across Virginia.",
-  icons: {
-    icon: KING_ELECTRIC_LOGO
-  }
+   icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
