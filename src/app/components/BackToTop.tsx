@@ -18,9 +18,9 @@ export default function BackToTop() {
     <button
       aria-label="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed right-5 bottom-5 z-50 h-12 w-12 rounded-full border border-slate-200 bg-white shadow-soft hover:bg-slate-50 transition grid place-items-center"
+      className="fixed right-5 bottom-5 z-50 h-12 w-12 rounded-full border border-white/15 bg-black shadow-soft hover:bg-brand-navy2 transition grid place-items-center"
     >
-      <span className="text-xl text-brand-navy">↑</span>
+      <span className="text-xl text-brand-accent">↑</span>
     </button>
   );
 }
