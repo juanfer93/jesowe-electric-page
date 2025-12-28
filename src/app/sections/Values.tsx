@@ -13,8 +13,18 @@ export default function Values() {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {VALUES.items.map((v) => (
             <div key={v.title} className="rounded-2xl border border-slate-200 bg-white shadow-soft p-8">
-              <h3 className="text-2xl font-semibold text-slate-900">{v.title}</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed">{v.body}</p>
+              <div className="flex items-start gap-4">
+                <span
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-navy/10 text-2xl"
+                  aria-hidden="true"
+                >
+                  {v.emoji}
+                </span>
+                <div>
+                  <h3 className="text-2xl font-semibold text-slate-900">{v.title}</h3>
+                  <p className="mt-4 text-slate-600 leading-relaxed">{v.body}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

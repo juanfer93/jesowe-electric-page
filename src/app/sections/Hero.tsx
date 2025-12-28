@@ -1,11 +1,16 @@
 import Reveal from "../components/Reveal";
 import { HERO, SITE } from "@/src/app/lib/content";
+import { PROJECT_IMAGE_URIS } from "@/src/app/lib/projectImages";
 
 export default function Hero() {
   return (
     <section id="home" className="relative scroll-mt-24">
       <div className="relative h-[78vh] min-h-[560px] w-full bg-brand-navy">
-        <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center opacity-30" />
+        <div className="absolute inset-0 bg-black" />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
+          style={{ backgroundImage: `url(${PROJECT_IMAGE_URIS.tesla_charger})` }}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-slate-900/20" />
 
         <div className="relative mx-auto max-w-6xl px-4 h-full flex items-center">

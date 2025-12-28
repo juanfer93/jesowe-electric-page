@@ -55,21 +55,25 @@ export const VALUES = {
   items: [
     {
       title: "Safety",
+      emoji: "🛡️",
       body:
         "Ensuring the safety of our clients and team members is our top priority. We adhere to the highest industry standards and use state-of-the-art equipment to deliver safe, reliable services."
     },
     {
       title: "Quality",
+      emoji: "🏆",
       body:
         "We are dedicated to providing top-notch electrical work, using only the best materials and practices. Our team of licensed and skilled electricians guarantees that every project is completed with precision and care."
     },
     {
       title: "Integrity",
+      emoji: "🤝",
       body:
         "We believe in maintaining open and honest communication with our clients, ensuring transparency and trust throughout every stage of our projects."
     },
     {
       title: "Customer Satisfaction",
+      emoji: "😊",
       body:
         "We strive to exceed our clients’ expectations by delivering exceptional service and tailored solutions that cater to their unique needs."
     }
