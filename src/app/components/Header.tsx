@@ -32,9 +32,9 @@ export default function Header() {
             <Image
               src={KING_ELECTRIC_LOGO}
               alt="King Electric Home Renovations"
-              width={160}
-              height={64}
-              className="h-10 w-auto rounded-md bg-black object-contain ring-1 ring-white/10 sm:h-12"
+              width={96}
+              height={96}
+              className="h-10 w-10 rounded-full bg-black object-contain ring-1 ring-white/10 sm:h-12 sm:w-12"
               priority
             />
             <div className="leading-tight">
