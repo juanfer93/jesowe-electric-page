@@ -1,8 +1,7 @@
 import Reveal from "@/src/app/components/Reveal";
 import { HERO, SITE } from "@/src/app/lib/content";
 
-const HERO_VIDEO_URL =
-  "https://cdn.coverr.co/videos/coverr-tesla-model-s-charging-8477/1080p.mp4";
+const HERO_VIDEO_URL = "/videos/hero.mp4";
 
 export default function Hero() {
   return (
