@@ -161,7 +161,7 @@ export const PROJECTS = {
       title: "Commercial Buildouts",
       img: PROJECT_IMAGE_URIS.commercial_buildout,
       gallery: [
-        "/img/projects/commercial/IMG_0440_1.jpg",
+        "/img/projects/commercial/IMG_9990.jpeg",
         "/img/projects/commercial/IMG_5347.jpg",
         "/img/projects/commercial/IMG_5533.jpg",
         "/img/projects/commercial/IMG_9989.jpeg",
