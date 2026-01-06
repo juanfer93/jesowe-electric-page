@@ -113,11 +113,61 @@ export const REVIEWS = {
 export const PROJECTS = {
   title: "Our Projects",
   cards: [
-    { title: "Tesla & EV Charger Installs", img: PROJECT_IMAGE_URIS.tesla_charger },
-    { title: "Indoor Lighting Upgrades", img: PROJECT_IMAGE_URIS.interior_lighting },
-    { title: "Panel Upgrades", img: PROJECT_IMAGE_URIS.panel_upgrade },
-    { title: "Outdoor & Landscape Lighting", img: PROJECT_IMAGE_URIS.landscape_lighting },
-    { title: "Commercial Buildouts", img: PROJECT_IMAGE_URIS.commercial_buildout }
+    {
+      title: "Tesla & EV Charger Installs",
+      img: PROJECT_IMAGE_URIS.tesla_charger,
+      gallery: [
+        "/img/projects/chargers/FullSizeRender.jpg",
+        "/img/projects/chargers/IMG_1734_1.jpg",
+        "/img/projects/chargers/IMG_2385.jpg",
+        "/img/projects/chargers/IMG_4054.jpg",
+        "/img/projects/chargers/IMG_4055.jpg"
+      ]
+    },
+    {
+      title: "Indoor Lighting Upgrades",
+      img: PROJECT_IMAGE_URIS.interior_lighting,
+      gallery: [
+        "/img/projects/indoor/IMG_2455_1.jpg",
+        "/img/projects/indoor/IMG_3577.jpg",
+        "/img/projects/indoor/IMG_4779_1.jpg",
+        "/img/projects/indoor/IMG_9976.png",
+        "/img/projects/indoor/IMG_9985.png"
+      ]
+    },
+    {
+      title: "Panel Upgrades",
+      img: PROJECT_IMAGE_URIS.panel_upgrade,
+      gallery: [
+        "/img/projects/panel/IMG_0875.jpg",
+        "/img/projects/panel/IMG_1038.jpg",
+        "/img/projects/panel/IMG_3978.jpg",
+        "/img/projects/panel/IMG_3978_1.jpg",
+        "/img/projects/panel/circuit_breaker_hero.jpg"
+      ]
+    },
+    {
+      title: "Outdoor & Landscape Lighting",
+      img: PROJECT_IMAGE_URIS.landscape_lighting,
+      gallery: [
+        "/img/projects/outdoor/IMG_0440.jpg",
+        "/img/projects/outdoor/IMG_0440_1.jpg",
+        "/img/projects/outdoor/IMG_0444_1.jpg",
+        "/img/projects/outdoor/IMG_0448.jpg",
+        "/img/projects/outdoor/IMG_0456.jpg"
+      ]
+    },
+    {
+      title: "Commercial Buildouts",
+      img: PROJECT_IMAGE_URIS.commercial_buildout,
+      gallery: [
+        "/img/projects/commercial/IMG_0440_1.jpg",
+        "/img/projects/commercial/IMG_5347.jpg",
+        "/img/projects/commercial/IMG_5533.jpg",
+        "/img/projects/commercial/IMG_9989.jpeg",
+        "/img/projects/commercial/IMG_9991_1.jpeg"
+      ]
+    }
   ]
 } as const;
 
