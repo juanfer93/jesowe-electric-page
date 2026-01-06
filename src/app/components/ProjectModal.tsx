@@ -68,7 +68,7 @@ export default function ProjectModal({ project, isOpen, onClose }: Props) {
 
       {/* Modal Content */}
       <div
-        className={`relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl transform transition-all duration-300 ease-out ${
+        className={`relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl transform transition-all duration-300 ease-out ${
           visible ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-4"
         }`}
       >
@@ -101,17 +101,17 @@ export default function ProjectModal({ project, isOpen, onClose }: Props) {
         {/* Body */}
         <div className="p-6">
           {project?.gallery && project.gallery.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
               {project.gallery.map((src, index) => (
                 <div
                   key={index}
-                  className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100 shadow-sm border border-slate-100"
+                  className="relative h-40 sm:h-44 md:h-48 w-full max-w-[280px] rounded-xl overflow-hidden bg-slate-100 shadow-sm border border-slate-100"
                 >
                   <Image
                     src={src}
                     alt={`${project.title} - Image ${index + 1}`}
                     fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 280px, (min-width: 768px) 240px, 100vw"
                     className="object-cover hover:scale-105 transition-transform duration-500"
                   />
                 </div>
