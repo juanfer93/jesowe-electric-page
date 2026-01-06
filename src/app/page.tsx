@@ -1,7 +1,6 @@
 import BackToTop from "@/src/app/components/BackToTop";
 import Footer from "@/src/app/components/Footer";
 import Header from "@/src/app/components/Header";
-import About from "@/src/app/sections/About";
 import Contact from "@/src/app/sections/Contact";
 import Hero from "@/src/app/sections/Hero";
 import Projects from "@/src/app/sections/Projects";
@@ -15,7 +14,6 @@ export default function Page() {
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <About />
       <Services />
       <Values />
       <Team />

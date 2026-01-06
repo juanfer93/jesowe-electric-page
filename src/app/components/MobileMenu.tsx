@@ -11,10 +11,18 @@ export default function MobileMenu() {
   if (!open) return null;
 
   const handleNav = (href: string) => (e: React.MouseEvent) => {
-    e.preventDefault();
     setOpen(false);
+    if (!href.startsWith("#")) {
+      return;
+    }
+    e.preventDefault();
     const id = href.replace("#", "");
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    window.location.href = `/${href}`;
   };
 
   return (
@@ -30,14 +38,20 @@ export default function MobileMenu() {
       <div className="h-full w-full flex items-center justify-center">
         <nav className="flex flex-col items-center gap-10">
           {NAV.map((item) => (
-            <Link
+            <span
               key={item.href}
-              href={item.href}
-              onClick={handleNav(item.href)}
               className="text-3xl md:text-4xl font-light text-slate-200 hover:text-brand-accent transition"
             >
-              {item.label}
-            </Link>
+              {item.href.startsWith("#") ? (
+                <a href={item.href} onClick={handleNav(item.href)}>
+                  {item.label}
+                </a>
+              ) : (
+                <Link href={item.href} onClick={handleNav(item.href)}>
+                  {item.label}
+                </Link>
+              )}
+            </span>
           ))}
 
           <a
