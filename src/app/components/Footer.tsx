@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import Reveal from "@/src/app/components/Reveal";
 import { KING_ELECTRIC_LOGO } from "@/src/app/lib/brandAssets";
 import { SERVICES, SITE } from "@/src/app/lib/content";
 
@@ -8,7 +9,7 @@ const HIGHLIGHTED_SERVICES = SERVICES.items.slice(0, 4);
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-brand-navy text-slate-100">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1.2fr_1fr_1fr]">
+      <Reveal className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1.2fr_1fr_1fr]">
         <div className="space-y-4">
           <div className="flex items-center gap-4">
             <div className="rounded-full bg-white p-2">
@@ -59,10 +60,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="border-t border-white/10 py-4 text-center text-xs text-slate-400">
+      </Reveal>
+      <Reveal className="border-t border-white/10 py-4 text-center text-xs text-slate-400">
         © {new Date().getFullYear()} {SITE.companyName}. All rights reserved.
-      </div>
+      </Reveal>
     </footer>
   );
 }
