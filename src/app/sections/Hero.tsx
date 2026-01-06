@@ -1,4 +1,4 @@
-import Reveal from "../components/Reveal";
+import Reveal from "@/src/app/components/Reveal";
 import { HERO, SITE } from "@/src/app/lib/content";
 
 const HERO_VIDEO_URL =

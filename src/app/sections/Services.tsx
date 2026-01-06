@@ -1,5 +1,5 @@
-import Section from "../components/Section";
-import Reveal from "../components/Reveal";
+import Section from "@/src/app/components/Section";
+import Reveal from "@/src/app/components/Reveal";
 import { SERVICES } from "@/src/app/lib/content";
 
 export default function Services() {

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Section from "../components/Section";
-import Reveal from "../components/Reveal";
+import Section from "@/src/app/components/Section";
+import Reveal from "@/src/app/components/Reveal";
 import { PROJECTS } from "@/src/app/lib/content";
 
 export default function Projects() {

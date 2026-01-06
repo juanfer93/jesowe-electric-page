@@ -1,7 +1,7 @@
 "use client";
 
-import Section from "../components/Section";
-import Reveal from "../components/Reveal";
+import Section from "@/src/app/components/Section";
+import Reveal from "@/src/app/components/Reveal";
 import { CONTACT, SITE } from "@/src/app/lib/content";
 
 import { useUIStore } from "@/src/app/store/uiStore";
