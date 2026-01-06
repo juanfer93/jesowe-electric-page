@@ -12,12 +12,13 @@ export default function Footer() {
       <Reveal className="mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-[1.2fr_1fr_1fr]">
         <div className="space-y-4">
           <div className="flex items-center gap-4">
-            <div className="rounded-full bg-white p-2">
+            <div className="rounded-full bg-white p-1">
               <Image
                 src={KING_ELECTRIC_LOGO}
                 alt={`${SITE.companyName} logo`}
-                width={64}
-                height={64}
+                width={48}
+                height={48}
+                className="h-10 w-10 rounded-full bg-black object-contain"
               />
             </div>
             <div>
