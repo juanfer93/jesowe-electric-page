@@ -3,6 +3,7 @@ import Footer from "@/src/app/components/Footer";
 import Header from "@/src/app/components/Header";
 import Reveal from "@/src/app/components/Reveal";
 import { REVIEWS, SITE, TEAM, VALUES } from "@/src/app/lib/content";
+import Image from "next/image";
 
 export default function Page() {
   const review = REVIEWS.items[0];
@@ -31,10 +32,14 @@ export default function Page() {
 
       <section className="border-t border-slate-200 py-16 sm:py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[1.1fr_1fr] lg:items-center">
-          <Reveal className="aspect-[4/3] w-full rounded-3xl border-2 border-dashed border-slate-300 bg-slate-100 text-sm text-slate-500 sm:text-base">
-            <div className="flex h-full items-center justify-center px-6 text-center">
-              Image placeholder (add your photo here)
-            </div>
+          <Reveal className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-slate-100">
+            <Image
+              src="/img/charger.avif"
+              alt="Electrical charger installation"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </Reveal>
           <Reveal className="text-center lg:text-left">
             <h2 className="text-3xl font-semibold text-brand-navy sm:text-4xl">{VALUES.title}</h2>
@@ -48,15 +53,20 @@ export default function Page() {
             <h2 className="text-3xl font-semibold text-brand-navy sm:text-4xl">{TEAM.title}</h2>
             <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg">{TEAM.body}</p>
           </Reveal>
-          <Reveal className="order-1 aspect-[4/3] w-full rounded-3xl border-2 border-dashed border-slate-300 bg-slate-100 text-sm text-slate-500 sm:text-base lg:order-2">
-            <div className="flex h-full items-center justify-center px-6 text-center">
-              Image placeholder (add your photo here)
-            </div>
+          <Reveal className="order-1 relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-slate-100 lg:order-2">
+            <Image
+              src="/img/charger2.jpg"
+              alt="Electrical charger equipment"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </Reveal>
         </div>
       </section>
 
       <section className="border-t border-slate-200 py-16 sm:py-20">
+
         <div className="mx-auto max-w-5xl px-4 text-center">
           <Reveal>
             <h2 className="text-3xl font-semibold text-brand-navy sm:text-4xl">{REVIEWS.title}</h2>
