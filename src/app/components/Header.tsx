@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { NAV, SITE } from "@/src/app/lib/content";
 import { KING_ELECTRIC_LOGO } from "@/src/app/lib/brandAssets";
 import MobileMenu from "./MobileMenu";
@@ -19,9 +20,17 @@ export default function Header() {
   }, [open]);
 
   const scrollTo = (href: string) => (e: React.MouseEvent) => {
+    if (!href.startsWith("#")) {
+      return;
+    }
     e.preventDefault();
     const id = href.replace("#", "");
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    window.location.href = `/${href}`;
   };
 
   return (
@@ -45,14 +54,15 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center gap-6">
             {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={scrollTo(item.href)}
-                className="text-sm text-slate-200 hover:text-brand-accent transition"
-              >
-                {item.label}
-              </a>
+              <span key={item.href} className="text-sm text-slate-200 hover:text-brand-accent transition">
+                {item.href.startsWith("#") ? (
+                  <a href={item.href} onClick={scrollTo(item.href)}>
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link href={item.href}>{item.label}</Link>
+                )}
+              </span>
             ))}
           </nav>
 
