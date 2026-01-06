@@ -1,14 +1,14 @@
-import Header from "./components/Header";
-import BackToTop from "./components/BackToTop";
-
-import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Services from "./sections/Services";
-import Values from "./sections/Values";
-import Team from "./sections/Team";
-import Reviews from "./sections/Reviews";
-import Projects from "./sections/Projects";
-import Contact from "./sections/Contact";
+import BackToTop from "@/src/app/components/BackToTop";
+import Footer from "@/src/app/components/Footer";
+import Header from "@/src/app/components/Header";
+import About from "@/src/app/sections/About";
+import Contact from "@/src/app/sections/Contact";
+import Hero from "@/src/app/sections/Hero";
+import Projects from "@/src/app/sections/Projects";
+import Reviews from "@/src/app/sections/Reviews";
+import Services from "@/src/app/sections/Services";
+import Team from "@/src/app/sections/Team";
+import Values from "@/src/app/sections/Values";
 
 export default function Page() {
   return (
@@ -22,6 +22,7 @@ export default function Page() {
       <Reviews />
       <Projects />
       <Contact />
+      <Footer />
       <BackToTop />
     </main>
   );
