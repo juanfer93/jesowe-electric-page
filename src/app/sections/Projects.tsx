@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Section from "@/src/app/components/Section";
 import Reveal from "@/src/app/components/Reveal";
 import ProjectModal from "@/src/app/components/ProjectModal";
@@ -21,37 +20,49 @@ export default function Projects() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3 max-w-5xl mx-auto">
           {PROJECTS.cards.map((p) => (
-            <button
+            <div
               key={p.title}
-              onClick={() => setSelectedProject(p)}
-              className="group text-left w-full rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-soft transition-transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-brand-navy/50"
+              className="group w-full rounded-2xl border border-slate-200 bg-white shadow-soft transition-transform hover:-translate-y-1 flex flex-col min-h-[320px]"
             >
-              <div className="relative aspect-[16/10] bg-slate-200">
-                <Image
-                  src={p.img}
-                  alt={p.title}
-                  fill
-                  sizes="(min-width: 1280px) 30vw, (min-width: 1024px) 40vw, (min-width: 768px) 45vw, 100vw"
-                  className="object-cover"
-                  priority={p.title.includes("Tesla")}
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-brand-navy/25 to-transparent" />
-                
-                {/* Overlay Icon indicating clickability */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
-                  <div className="bg-white/90 p-3 rounded-full shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                    <svg className="w-6 h-6 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div className="p-5">
-                <h3 className="text-2xl md:text-[26px] font-semibold text-brand-navy group-hover:opacity-90 transition">
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl md:text-2xl font-semibold text-brand-navy mb-3 leading-tight">
                   {p.title}
                 </h3>
+                {p.description && (
+                  <p className="text-slate-600 mb-5 leading-relaxed text-[15px] min-h-[48px]">
+                    {p.description}
+                  </p>
+                )}
+                {p.features && p.features.length > 0 && (
+                  <ul className="mb-5 space-y-2.5 flex-1 min-h-[120px]">
+                    {p.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-2.5 text-slate-600">
+                        <span className="text-brand-accent mt-1.5 flex-shrink-0">
+                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <circle cx="10" cy="10" r="3" />
+                          </svg>
+                        </span>
+                        <span className="text-sm leading-relaxed">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <button
+                  onClick={() => setSelectedProject(p)}
+                  className="flex items-center gap-2 text-brand-navy font-medium hover:text-brand-accent transition-colors group/btn mt-auto pt-2"
+                >
+                  <span>View Photos</span>
+                  <svg 
+                    className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
               </div>
-            </button>
+            </div>
           ))}
         </div>
       </Reveal>

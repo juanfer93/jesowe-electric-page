@@ -116,6 +116,13 @@ export const PROJECTS = {
     {
       title: "Tesla & EV Charger Installs",
       img: PROJECT_IMAGE_URIS.tesla_charger,
+      description: "Professional installation of Tesla and EV charging stations for residential and commercial properties.",
+      features: [
+        "Tesla Wall Connector installation",
+        "Level 2 EV charger setup",
+        "Residential & commercial solutions",
+        "Fast charging capabilities"
+      ],
       gallery: [
         "/img/projects/chargers/FullSizeRender.jpg",
         "/img/projects/chargers/IMG_1734_1.jpg",
@@ -127,6 +134,13 @@ export const PROJECTS = {
     {
       title: "Indoor Lighting Upgrades",
       img: PROJECT_IMAGE_URIS.interior_lighting,
+      description: "Modern indoor lighting solutions that enhance ambiance and functionality in your home or business space.",
+      features: [
+        "Recessed lighting installation",
+        "Pendant & chandelier setup",
+        "Smart lighting systems",
+        "Ambient & task lighting design"
+      ],
       gallery: [
         "/img/projects/indoor/IMG_2455_1.jpg",
         "/img/projects/indoor/IMG_3577.jpg",
@@ -138,6 +152,13 @@ export const PROJECTS = {
     {
       title: "Panel Upgrades",
       img: PROJECT_IMAGE_URIS.panel_upgrade,
+      description: "Safe and reliable electrical panel upgrades to meet your home's growing power needs and safety standards.",
+      features: [
+        "200-amp panel upgrades",
+        "Circuit breaker replacement",
+        "Safety inspections",
+        "Load capacity improvements"
+      ],
       gallery: [
         "/img/projects/panel/IMG_0875.jpg",
         "/img/projects/panel/IMG_1038.jpg",
@@ -149,6 +170,13 @@ export const PROJECTS = {
     {
       title: "Outdoor & Landscape Lighting",
       img: PROJECT_IMAGE_URIS.landscape_lighting,
+      description: "Beautiful outdoor lighting designs that highlight your property's best features and improve security.",
+      features: [
+        "Pathway & accent lighting",
+        "Security lighting systems",
+        "Landscape illumination",
+        "Weather-resistant fixtures"
+      ],
       gallery: [
         "/img/projects/outdoor/IMG_0440.jpg",
         "/img/projects/outdoor/IMG_0440_1.jpg",
@@ -160,6 +188,13 @@ export const PROJECTS = {
     {
       title: "Commercial Buildouts",
       img: PROJECT_IMAGE_URIS.commercial_buildout,
+      description: "Complete electrical solutions for commercial spaces, from design to installation and ongoing maintenance.",
+      features: [
+        "Office electrical systems",
+        "Retail space wiring",
+        "Commercial lighting design",
+        "Project management & coordination"
+      ],
       gallery: [
         "/img/projects/commercial/IMG_9990.jpeg",
         "/img/projects/commercial/IMG_5347.jpg",
