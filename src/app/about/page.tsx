@@ -18,13 +18,14 @@ export default function Page() {
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-accent">
               The Full Story
             </p>
-            <h1 className="mt-4 text-4xl font-semibold text-brand-navy sm:text-5xl">About</h1>
+            <h1 className="mt-4 text-4xl font-semibold text-brand-navy sm:text-5xl">
+              Professional Electrical Services in Virginia
+            </h1>
             <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg">
-              At our company, we are committed to providing exceptional electrical services to
-              both homeowners and businesses throughout Virginia. Our unwavering dedication to
-              safety, quality, and customer satisfaction has earned us a reputation as a trusted
-              provider of electrical solutions in the region. Since 2011, we have proudly served
-              Northern Virginia and look forward to continuing that commitment for years to come.
+              King Electric provides reliable residential and commercial electrical services in Virginia. Our licensed electricians specialize in EV charger installations, electrical panel upgrades, indoor and outdoor lighting, and home electrical improvements.
+            </p>
+            <p className="mt-6 text-base leading-8 text-slate-600 sm:text-lg">
+              We focus on safe, code-compliant work, clear communication, and long-lasting solutions. Your safety and satisfaction are always our priority.
             </p>
           </Reveal>
         </div>

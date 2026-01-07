@@ -3,6 +3,7 @@ import Footer from "@/src/app/components/Footer";
 import Header from "@/src/app/components/Header";
 import Contact from "@/src/app/sections/Contact";
 import Hero from "@/src/app/sections/Hero";
+import HeroInfo from "@/src/app/sections/HeroInfo";
 import Projects from "@/src/app/sections/Projects";
 import Reviews from "@/src/app/sections/Reviews";
 import Services from "@/src/app/sections/Services";
@@ -14,6 +15,7 @@ export default function Page() {
     <main className="min-h-screen">
       <Header />
       <Hero />
+      <HeroInfo />
       <Services />
       <Values />
       <Team />
