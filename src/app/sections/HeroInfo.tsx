@@ -26,7 +26,7 @@ export default function HeroInfo() {
 
             <a
               href={SITE.phoneTel}
-              className="inline-flex justify-center items-center rounded-xl border border-slate-200 px-6 py-3 font-semibold text-slate-900 hover:bg-slate-100 transition"
+              className="inline-flex justify-center items-center rounded-xl border border-slate-400 px-6 py-3 font-semibold text-slate-900 hover:bg-slate-50 transition"
             >
               {HERO.secondaryCta} · {SITE.phoneDisplay}
             </a>
