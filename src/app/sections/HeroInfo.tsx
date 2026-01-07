@@ -3,16 +3,16 @@ import { HERO, SITE } from "@/src/app/lib/content";
 
 export default function HeroInfo() {
   return (
-    <section className="relative bg-brand-navy py-16 md:py-24">
+    <section className="relative bg-white py-16 md:py-24">
       <div className="relative mx-auto max-w-6xl px-4">
         <Reveal className="max-w-2xl">
-          <p className="text-xs tracking-widest text-slate-200/80 uppercase">
+          <p className="text-xs tracking-widest text-slate-500 uppercase">
             {SITE.companyName}
           </p>
-          <h1 className="mt-4 text-4xl md:text-6xl font-semibold text-white leading-tight">
+          <h1 className="mt-4 text-4xl md:text-6xl font-semibold text-slate-900 leading-tight">
             {HERO.headline}
           </h1>
-          <p className="mt-6 text-lg text-slate-100/90 leading-relaxed">
+          <p className="mt-6 text-lg text-slate-600 leading-relaxed">
             {HERO.subheadline}
           </p>
 
@@ -26,7 +26,7 @@ export default function HeroInfo() {
 
             <a
               href={SITE.phoneTel}
-              className="inline-flex justify-center items-center rounded-xl border border-white/30 px-6 py-3 font-semibold text-white hover:bg-white/10 transition"
+              className="inline-flex justify-center items-center rounded-xl border border-slate-200 px-6 py-3 font-semibold text-slate-900 hover:bg-slate-100 transition"
             >
               {HERO.secondaryCta} · {SITE.phoneDisplay}
             </a>
