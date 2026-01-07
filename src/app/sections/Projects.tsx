@@ -20,12 +20,14 @@ export default function Projects() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3 max-w-5xl mx-auto">
           {PROJECTS.cards.map((p) => (
-            <div
+            <button
               key={p.title}
-              className="group w-full rounded-2xl border border-slate-200 bg-white shadow-soft transition-transform hover:-translate-y-1 flex flex-col min-h-[320px]"
+              type="button"
+              onClick={() => setSelectedProject(p)}
+              className="group w-full rounded-2xl border border-slate-200 bg-white shadow-soft transition-transform hover:-translate-y-1 flex flex-col min-h-[320px] text-left"
             >
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl md:text-2xl font-semibold text-brand-navy mb-3 leading-tight">
+                <h3 className="text-lg md:text-xl font-semibold text-brand-navy mb-3 leading-snug whitespace-nowrap">
                   {p.title}
                 </h3>
                 {p.description && (
@@ -47,10 +49,7 @@ export default function Projects() {
                     ))}
                   </ul>
                 )}
-                <button
-                  onClick={() => setSelectedProject(p)}
-                  className="flex items-center gap-2 text-brand-navy font-medium hover:text-brand-accent transition-colors group/btn mt-auto pt-2"
-                >
+                <div className="flex items-center gap-2 text-brand-navy font-medium hover:text-brand-accent transition-colors group/btn mt-auto pt-2">
                   <span>View Photos</span>
                   <svg 
                     className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform" 
@@ -60,9 +59,9 @@ export default function Projects() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </Reveal>
