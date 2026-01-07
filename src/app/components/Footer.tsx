@@ -4,7 +4,7 @@ import Reveal from "@/src/app/components/Reveal";
 import { KING_ELECTRIC_LOGO } from "@/src/app/lib/brandAssets";
 import { SERVICES, SITE } from "@/src/app/lib/content";
 
-const HIGHLIGHTED_SERVICES = SERVICES.items.slice(0, 4);
+const HIGHLIGHTED_SERVICES = SERVICES.cards.map((card) => card.title);
 
 export default function Footer() {
   return (

@@ -35,18 +35,48 @@ export const ABOUT = {
 
 export const SERVICES = {
   title: "Our Services",
-  items: [
-    "Tesla & EV Charger Installations",
-    "Panel Upgrades & Repairs",
-    "Indoor Lighting Design & Installation",
-    "Outdoor & Landscape Lighting",
-    "Fan Installs & Repair",
-    "Ground Wire Install",
-    "Jacuzzi / Hot Tub Wiring",
-    "Repairing Light Fixtures",
-    "Outlets and Switches (New or Relocated)",
-    "Drywall repairs",
-    "And MORE."
+  cards: [
+    {
+      emoji: "⚡",
+      title: "EV Chargers",
+      description: "Modern electrical solutions for electric vehicles.",
+      img: "/img/charger.avif",
+      features: [
+        "Tesla & EV charger installations",
+        "Dedicated EV circuits",
+        "Ground wire installation",
+        "EV-ready electrical upgrades"
+      ]
+    },
+    {
+      emoji: "🔌",
+      title: "Residential & Commercial Electrical",
+      description: "Reliable electrical services for homes and businesses.",
+      img: PROJECT_IMAGE_URIS.panel_upgrade,
+      features: [
+        "Electrical panel upgrades & repairs",
+        "Indoor lighting design & installation",
+        "Outdoor & landscape lighting",
+        "Fan installations & repairs",
+        "Light fixture repairs & replacements",
+        "Outlets and switches (new or relocated)",
+        "Jacuzzi / hot tub wiring",
+        "Commercial electrical service & repairs"
+      ]
+    },
+    {
+      emoji: "🏠",
+      title: "Home Renovations",
+      description: "Electrical support and finishing work for home improvement projects.",
+      img: PROJECT_IMAGE_URIS.interior_lighting,
+      features: [
+        "Drywall repairs",
+        "Finish repairs after electrical work",
+        "Electrical-ready remodeling support",
+        "Light renovation services",
+        "Custom home solutions"
+      ]
+    }
   ]
 } as const;
 
