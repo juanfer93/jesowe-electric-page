@@ -5,7 +5,7 @@ export const SITE = {
   tagline: "Residential & Commercial",
   phoneDisplay: "703-859-4790",
   phoneTel: "tel:7038594790",
-  toEmail: "jesowe.electric@gmail.com",
+  toEmail: "kingelectrichomer@gmail.com",
   locationLabel: "Virginia, USA",
   mapsEmbedUrl: "https://www.google.com/maps?q=Alexandria,+VA&output=embed"
 } as const;
