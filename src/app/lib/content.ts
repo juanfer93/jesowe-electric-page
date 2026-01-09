@@ -73,7 +73,10 @@ export const SERVICES = {
         "Drywall repairs",
         "Finish repairs after electrical work",
         "Electrical-ready remodeling support",
+        "General painting",
         "Light renovation services",
+        "Power washing",
+        "External deck repair",
         "Custom home solutions"
       ]
     }
