@@ -5,6 +5,7 @@ import Section from "@/src/app/components/Section";
 import Reveal from "@/src/app/components/Reveal";
 import ProjectModal from "@/src/app/components/ProjectModal";
 import { PROJECTS } from "@/src/app/lib/content";
+import NextImage from "next/image";
 
 type Project = typeof PROJECTS.cards[number];
 
@@ -24,37 +25,31 @@ export default function Projects() {
               key={p.title}
               type="button"
               onClick={() => setSelectedProject(p)}
-              className="group w-full rounded-2xl border border-slate-200 bg-white shadow-soft transition-transform hover:-translate-y-1 flex flex-col min-h-[320px] text-left"
+              className="group w-full rounded-2xl border border-slate-200 bg-white shadow-soft transition-all hover:-translate-y-1 flex flex-col overflow-hidden text-left h-full"
             >
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg md:text-xl font-semibold text-brand-navy mb-3 leading-snug whitespace-nowrap">
+              <div className="relative w-full h-48 bg-slate-100">
+                <NextImage
+                  src={p.img}
+                  alt={p.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="p-4 flex flex-col flex-1">
+                <h3 className="text-lg font-semibold text-brand-navy mb-2 leading-snug">
                   {p.title}
                 </h3>
                 {p.description && (
-                  <p className="text-slate-600 mb-5 leading-relaxed text-[15px] min-h-[48px]">
+                  <p className="text-slate-600 mb-4 leading-relaxed text-sm line-clamp-3">
                     {p.description}
                   </p>
                 )}
-                {p.features && p.features.length > 0 && (
-                  <ul className="mb-5 space-y-2.5 flex-1 min-h-[120px]">
-                    {p.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-2.5 text-slate-600">
-                        <span className="text-brand-accent mt-1.5 flex-shrink-0">
-                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <circle cx="10" cy="10" r="3" />
-                          </svg>
-                        </span>
-                        <span className="text-sm leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                <div className="flex items-center gap-2 text-brand-navy font-medium hover:text-brand-accent transition-colors group/btn mt-auto pt-2">
+                <div className="flex items-center gap-2 text-brand-navy text-sm font-medium hover:text-brand-accent transition-colors group/btn mt-auto pt-2">
                   <span>View Photos</span>
-                  <svg 
-                    className="w-5 h-5 transform group-hover/btn:translate-x-1 transition-transform" 
-                    fill="none" 
-                    stroke="currentColor" 
+                  <svg
+                    className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

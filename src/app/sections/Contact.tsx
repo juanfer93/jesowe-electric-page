@@ -2,6 +2,7 @@
 
 import Section from "@/src/app/components/Section";
 import Reveal from "@/src/app/components/Reveal";
+import SuccessModal from "@/src/app/components/SuccessModal";
 import { CONTACT, SITE } from "@/src/app/lib/content";
 
 import { useUIStore } from "@/src/app/store/uiStore";
@@ -119,17 +120,11 @@ export default function Contact() {
                 {status === "sending" ? "Sending..." : "Send"}
               </button>
 
-              {status === "sent" && (
-                <div className="text-sm text-emerald-700">
-                  Message sent successfully.
-                </div>
-              )}
-
               {status === "error" && (
                 <div className="text-sm text-red-600">Error: {errorMsg}</div>
               )}
 
-              {(status === "sent" || status === "error") && (
+              {status === "error" && (
                 <button
                   type="button"
                   onClick={() => resetStatus()}
@@ -139,6 +134,11 @@ export default function Contact() {
                 </button>
               )}
             </form>
+
+            <SuccessModal
+              isOpen={status === "sent"}
+              onClose={resetStatus}
+            />
 
             <div className="mt-8 flex items-center justify-between gap-3">
               <a

@@ -235,9 +235,28 @@ export const PROJECTS = {
         "/img/projects/commercial/IMG_9989.jpeg",
         "/img/projects/commercial/IMG_9991_1.jpeg"
       ]
+    },
+    {
+      title: "Home Renovations",
+      img: "/img/projects/renovations/ceiling.png",
+      description: "Complete home transformation services including flooring, bathroom remodeling, and custom ceiling finishes.",
+      features: [
+        "Professional flooring installation",
+        "Bathroom remodeling & tile work",
+        "Custom coffered ceiling finishes",
+        "Full interior renovation support"
+      ],
+      gallery: [
+        "/img/projects/renovations/ceiling.png",
+        "/img/projects/renovations/flooring.jpg",
+        "/img/projects/renovations/bathroom_1.jpg",
+        "/img/projects/renovations/tiles.png",
+        "/img/projects/renovations/bathroom_2.png"
+      ]
     }
   ]
 } as const;
+
 
 export const CONTACT = {
   title: "We’re Here to Help!",
