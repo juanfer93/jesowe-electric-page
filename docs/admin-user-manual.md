@@ -1,86 +1,73 @@
-# User Guide
+# King Electric Website Admin Guide
 
-## King Electric Website Administration
+This guide explains how to update website text and photos using the admin panel. You do not need to edit website code.
 
-**Editing website text, services, projects, reviews, and images**
+## Sign in
 
-Initial edition · November 2026
+1. Open [https://www.kingelectrichome.com/admin/login](https://www.kingelectrichome.com/admin/login).
+2. Enter the username and password provided to you.
+3. Select **Sign in**. The session ends automatically after eight hours. Select **Sign out** when you finish.
 
----
+Keep your login details private. Anyone who has them can change the live website.
 
-## 1. Sign in
+## Find a section
 
-Open [https://www.kingelectrichome.com/admin](https://www.kingelectrichome.com/admin). If needed, it redirects you to the sign-in page.
+Use the menu on the left. Choose the area you want to update:
 
-Enter the administrator username and password you were given. Your session expires automatically after eight hours. Select **Sign out** to end it sooner.
-
-> On the public site, check that the address starts with `https://`. Do not use local preview credentials in production.
-
-## 2. What you can edit
-
-The side navigation groups the website content:
-
-| Section | What it contains |
+| Menu item | What you can change |
 | --- | --- |
-| **Overview** | A summary of the number of services, projects, and reviews. |
+| **Overview** | A quick count of the website's services, projects, and reviews. |
 | **Business details** | Business name, contact details, links, and navigation. |
-| **Page content** | Main home, about, team, and contact text. |
-| **Services** | The title, description, image, and features for each service. |
-| **Projects** | The title, description, highlights, image, and gallery for each project. |
-| **Reviews** | Customer comments, author, and review source. |
-| **Extra sections** | Additional text and images using a prepared layout. You can optionally add a menu link. |
+| **Page content** | Home, About, team, and contact text and images. |
+| **Services** | Service names, descriptions, images, and features. |
+| **Projects** | Project names, descriptions, cover photos, and galleries. |
+| **Reviews** | Customer quotes, names, and review sources. |
+| **Extra sections** | Additional prepared text and image sections. |
 
-## 3. Add, edit, and save content
+## Edit text and save it
 
-1. Open a section and edit the fields. Use **Add** or **Remove** where available.
-2. Select **Save changes** and wait for confirmation. The public website uses the saved content immediately.
-3. Select **View public website** to check the result.
+1. Open the section from the left menu.
+2. Click the text box you want to change and type the new text.
+3. Use **Add** or **Remove** if that section offers those buttons.
+4. Select **Save changes** at the top of the page.
+5. Wait for the save confirmation, then select **View public website** to check the result.
 
-If an error appears, check the fields and save again. Do not close the page while it is saving.
+Saved text goes live on the website. If you leave before selecting **Save changes**, your unsaved edits are not kept.
 
-## 4. Images
+## Add or replace an image
 
-For existing image fields outside Projects, keep the current image, enter a path to an existing website image (for example, `/img/charger.avif`), or upload a replacement. PNG, JPEG, WebP, and AVIF files are supported. Each uploaded file must be smaller than 1.4 MB.
+For image fields in **Page content**, **Services**, or **Extra sections**:
 
-### Project cover and gallery photos
+1. Find the image field you want to update.
+2. Select **Upload image** and choose a photo from your device.
+3. Select **Save changes** and wait for confirmation.
 
-1. Open **Projects** and find the project you want to update.
-2. Under **Cover photo**, select **Add cover photo** or **Replace cover**. To remove it, select **Remove cover**.
-3. Under **Project gallery**, select **Add photos** and choose one or more photos. Each thumbnail has its own **Remove** button.
-4. Select **Save changes** and wait for confirmation. Uploaded project photos are resized in the browser and stored on the website server; the project keeps references to them.
-5. Open the public website and check the project card and gallery.
+For a project cover or project gallery, follow the steps below.
 
-The project uploader accepts PNG, JPEG, WebP, and AVIF source photos up to 10 MB each, then optimizes them to at most 1.2 MB. A project can have up to 30 gallery photos. Uploading alone does not publish the change: select **Save changes**. If you leave before saving, the edited project will not keep the newly uploaded photo. When you save, unreferenced uploaded project images are cleaned up from storage.
+## Update project photos
 
----
+1. Select **Projects** from the left menu.
+2. Find the project you want to change.
+3. For the main photo, select **Add cover photo** or **Replace cover**. To remove it, select **Remove cover**.
+4. For gallery photos, select **Add photos** and choose one or more images. Each thumbnail has its own **Remove** button.
+5. Select **Save changes** and wait for confirmation.
+6. Select **View public website** and open the project to check the cover and gallery.
 
-## 5. Your changes are saved
+Use a clear, good-quality photo. If it does not upload, choose a smaller image and try again. A project can have up to 30 gallery photos.
 
-Selecting **Save changes** writes the website content to a JSON file on the server. Project photo files are saved next to that JSON in a `project-images` folder. Leaving the page, signing out, or signing back in does not undo saved edits. Unsaved edits in the form are not kept, so save before leaving.
+**Important:** Uploading a photo is only the first step. The project uses it on the live website after you select **Save changes**. Removing a photo also takes effect after saving.
 
-The Docker preview stores the JSON and `project-images` directory together in the persistent `jesowe-site-content` volume mounted at `/app/.data`. They remain available after the container restarts or is replaced. On the production host, `ADMIN_CONTENT_PATH` must point to a JSON file on writable persistent storage, and its parent directory must persist too because the images are written to a sibling `project-images` directory. A temporary filesystem can lose text and images when the hosting platform replaces the application. Ask the administrator to back up the entire content directory before major server changes.
+## How saved changes stay on the website
 
-## 6. Helpful tips
+After you save and see the confirmation, your changes stay on the live website when you sign out or return later. You do not need to add the same photos again.
 
-- Check spelling, phone numbers, and links before saving.
-- Saved changes go live immediately. Keep a copy of the previous text if you might need to restore it.
-- The panel edits existing content, not the overall design, application code, or new website features.
-- Contact the technical administrator before major content or server changes.
-- If you cannot sign in, confirm the address and ask the technical administrator to review the configuration. The panel does not include a password reset feature.
+Unsaved text changes are not saved. If you upload a photo but leave without saving the project, that photo may not be attached to the project.
 
-## 7. Production setup (technical administrator)
+## If something does not look right
 
-Set these environment variables in the hosting provider's environment or secret manager:
+- If a photo does not appear, return to **Projects**, check that it is still shown in the editor, and select **Save changes**.
+- If the save reports an error, leave the page open, check the form, and try saving again.
+- If you cannot sign in, check that you are using the production link above and that the login details are typed correctly.
+- Select **View public website** after saving to confirm the change.
 
-| Variable | Value |
-| --- | --- |
-| `ADMIN_USERNAME` | The chosen administrator username. |
-| `ADMIN_PASSWORD_HASH` | Output from `node scripts/generate-admin-password-hash.mjs`. Use the generated `scrypt:<salt>:<hash>` value; never store the original password here. |
-| `ADMIN_SESSION_SECRET` | A random value from `node -e "console.log(require('node:crypto').randomBytes(48).toString('base64url'))"`. |
-| `ADMIN_CONTENT_PATH` | An absolute file path on writable persistent storage, such as `/var/data/site-content.json` when the disk is mounted at `/var/data`. |
-
-The folder containing `ADMIN_CONTENT_PATH` must be persistent and writable by the application process. Project uploads are stored in its `project-images` subdirectory. If production runs multiple application instances, use shared persistent storage for both the JSON file and that image directory so every instance can read the same saved content and photos.
-
-For Render, attach a persistent disk to the web service, mount it at the directory used in `ADMIN_CONTENT_PATH` (for example, `/var/data`), and set the variable to a JSON file inside that directory. Render's default service filesystem is temporary; without a disk, uploaded project photos and saved content can disappear on restart or deploy. Render disks have an additional charge and are limited to one service instance.
-
-Do not commit secrets to GitHub, include them in this guide, or send them in messages. Use HTTPS and back up the persistent content volume.
+This panel is for updating the existing website information and photos. Contact the website administrator if you need a new section or a design change.

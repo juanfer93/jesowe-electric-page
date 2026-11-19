@@ -1,8 +1,9 @@
 import { readAdminProjectImage } from "@/src/app/lib/adminProjectImageStore";
 
-export async function GET(_request: Request, context: { params: { filename: string } }) {
+export async function GET(_request: Request, context: { params: Promise<{ filename: string }> }) {
   try {
-    const image = await readAdminProjectImage(context.params.filename);
+    const { filename } = await context.params;
+    const image = await readAdminProjectImage(filename);
     if (!image) return new Response("Not found", { status: 404 });
     return new Response(new Uint8Array(image.bytes), {
       headers: {

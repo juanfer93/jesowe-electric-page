@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
 import { adminSessionCookie, createAdminSessionToken, hasValidRequestOrigin, verifyAdminCredentials } from "@/src/app/lib/adminAuth";
-
-const attempts = new Map<string, { count: number; blockedUntil: number }>();
-const MAX_ATTEMPTS = 5;
-const BLOCK_DURATION_MS = 15 * 60 * 1000;
+import { RequestBodyTooLargeError, readJsonWithinLimit } from "@/src/app/lib/requestBody";
+import { clearRateLimit, consumeRateLimit, getClientAddress } from "@/src/app/lib/rateLimit";
 
 export async function POST(request: Request) {
   if (!hasValidRequestOrigin(request)) {
@@ -20,30 +18,34 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Admin access is not configured on this server." }, { status: 503 });
   }
 
-  const json = await request.json().catch(() => null);
-  const username = typeof json?.username === "string" ? json.username : "";
-  const password = typeof json?.password === "string" ? json.password : "";
+  let json: unknown;
+  try {
+    json = await readJsonWithinLimit(request, 4 * 1024);
+  } catch (error) {
+    const status = error instanceof RequestBodyTooLargeError ? 413 : 400;
+    return NextResponse.json({ error: "Invalid username or password." }, { status });
+  }
+  const credentials = typeof json === "object" && json !== null ? json as Record<string, unknown> : {};
+  const username = typeof credentials.username === "string" ? credentials.username : "";
+  const password = typeof credentials.password === "string" ? credentials.password : "";
   if (username.length > 120 || password.length > 1024) {
     return NextResponse.json({ error: "Invalid username or password." }, { status: 400 });
   }
 
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
-  const current = attempts.get(ip);
-  const now = Date.now();
-  if (current?.blockedUntil && current.blockedUntil > now) {
-    return NextResponse.json({ error: "Too many attempts. Try again in 15 minutes." }, { status: 429 });
+  const rateLimitKey = `admin-login:${getClientAddress(request)}`;
+  const rateLimit = await consumeRateLimit(rateLimitKey, 5, 15 * 60 * 1000);
+  if (!rateLimit.allowed) {
+    return NextResponse.json({ error: "Too many attempts. Try again in 15 minutes." }, {
+      status: 429,
+      headers: { "Retry-After": String(rateLimit.retryAfterSeconds) }
+    });
   }
 
   if (!verifyAdminCredentials(username, password)) {
-    const nextCount = current?.blockedUntil && current.blockedUntil <= now ? 1 : (current?.count || 0) + 1;
-    attempts.set(ip, {
-      count: nextCount,
-      blockedUntil: nextCount >= MAX_ATTEMPTS ? now + BLOCK_DURATION_MS : 0
-    });
     return NextResponse.json({ error: "Username or password is incorrect." }, { status: 401 });
   }
 
-  attempts.delete(ip);
+  await clearRateLimit(rateLimitKey);
   const response = NextResponse.json({ ok: true });
   response.cookies.set(adminSessionCookie(createAdminSessionToken()));
   return response;

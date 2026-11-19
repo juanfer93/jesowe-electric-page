@@ -2,9 +2,41 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { contactSchema } from "@/src/app/lib/contactSchema";
 import { getSiteContent } from "@/src/app/lib/siteContentStore";
+import { RequestBodyTooLargeError, readJsonWithinLimit } from "@/src/app/lib/requestBody";
+import { consumeRateLimit, getClientAddress } from "@/src/app/lib/rateLimit";
+
+const CONTACT_BODY_MAX_BYTES = 32 * 1024;
+const CONTACT_LIMIT = 5;
+const CONTACT_WINDOW_MS = 15 * 60 * 1000;
+
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (character) => {
+    switch (character) {
+      case "&": return "&amp;";
+      case "<": return "&lt;";
+      case ">": return "&gt;";
+      case '"': return "&quot;";
+      default: return "&#39;";
+    }
+  });
+}
 
 export async function POST(req: Request) {
-  const json = await req.json().catch(() => null);
+  const rateLimit = await consumeRateLimit(`contact:${getClientAddress(req)}`, CONTACT_LIMIT, CONTACT_WINDOW_MS);
+  if (!rateLimit.allowed) {
+    return NextResponse.json({ error: "Too many messages. Please try again later." }, {
+      status: 429,
+      headers: { "Retry-After": String(rateLimit.retryAfterSeconds) }
+    });
+  }
+
+  let json: unknown;
+  try {
+    json = await readJsonWithinLimit(req, CONTACT_BODY_MAX_BYTES);
+  } catch (error) {
+    const status = error instanceof RequestBodyTooLargeError ? 413 : 400;
+    return NextResponse.json({ error: status === 413 ? "Your message is too large." : "Invalid form data." }, { status });
+  }
 
   const parsed = contactSchema.safeParse(json);
   if (!parsed.success) {
@@ -23,13 +55,8 @@ export async function POST(req: Request) {
   const from = process.env.MAIL_FROM || user;
 
   if (!host || !port || !user || !pass || !from) {
-    return NextResponse.json(
-      {
-        error:
-          "Email service is not configured. Missing SMTP env vars (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_FROM)."
-      },
-      { status: 500 }
-    );
+    console.error("The contact email service is not configured.");
+    return NextResponse.json({ error: "We could not send your message right now. Please try again later." }, { status: 500 });
   }
 
   const transporter = nodemailer.createTransport({
@@ -41,6 +68,11 @@ export async function POST(req: Request) {
 
   const siteContent = await getSiteContent();
   const SITE = siteContent.site;
+  const safeCompanyName = escapeHtml(SITE.companyName);
+  const safeFirstName = escapeHtml(firstName || "");
+  const safeLastName = escapeHtml(lastName || "");
+  const safeEmail = escapeHtml(email);
+  const safeMessage = escapeHtml(message).replace(/\r\n?|\n/g, "<br>");
   const subject = `New Website Lead - ${SITE.companyName}`;
   const html = `
       <!DOCTYPE html>
@@ -48,7 +80,7 @@ export async function POST(req: Request) {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>New Lead from ${SITE.companyName}</title>
+        <title>New Lead from ${safeCompanyName}</title>
         <style>
           body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
           .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
@@ -73,25 +105,25 @@ export async function POST(req: Request) {
             
             <div class="info-group">
               <span class="info-label">Name</span>
-              <div class="info-value">${(firstName || "")} ${(lastName || "")}</div>
+              <div class="info-value">${safeFirstName} ${safeLastName}</div>
             </div>
 
             <div class="info-group">
               <span class="info-label">Email</span>
-              <div class="info-value"><a href="mailto:${email}">${email}</a></div>
+              <div class="info-value"><a href="mailto:${safeEmail}">${safeEmail}</a></div>
             </div>
 
             ${message ? `
             <div class="info-group" style="border-bottom: none;">
               <span class="info-label">Message</span>
               <div class="message-box">
-                ${message.replace(/\n/g, '<br>')}
+                ${safeMessage}
               </div>
             </div>
             ` : ''}
           </div>
           <div class="footer">
-            <p>This email was sent from the contact form on <strong>${SITE.companyName}</strong> website.</p>
+            <p>This email was sent from the contact form on <strong>${safeCompanyName}</strong> website.</p>
           </div>
         </div>
       </body>
@@ -121,7 +153,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err) {
-    const msg = err instanceof Error ? err.message : "Unknown error";
-    return NextResponse.json({ error: `Failed to send email: ${msg}` }, { status: 500 });
+    console.error("Failed to send contact email.", err);
+    return NextResponse.json({ error: "We could not send your message right now. Please try again later." }, { status: 500 });
   }
 }
