@@ -28,12 +28,13 @@ export default function Projects({ projects }: { projects: SiteContent["projects
               className="group w-full rounded-2xl border border-slate-200 bg-white shadow-soft transition-all hover:-translate-y-1 flex flex-col overflow-hidden text-left h-full"
             >
               <div className="relative w-full h-48 bg-slate-100">
-                <NextImage
+                {p.img ? <NextImage
                   src={p.img}
                   alt={p.title}
                   fill
+                  unoptimized={p.img.startsWith("/admin-media/")}
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                /> : <div className="grid h-full place-items-center text-sm text-slate-400">No cover photo</div>}
               </div>
               <div className="p-4 flex flex-col flex-1">
                 <h3 className="text-lg font-semibold text-brand-navy mb-2 leading-snug">

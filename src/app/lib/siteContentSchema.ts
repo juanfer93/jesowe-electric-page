@@ -20,11 +20,19 @@ const imageSource = z
   .refine(
     (value) =>
       value.startsWith("/img/") ||
+      /^\/admin-media\/project-[a-f0-9-]{36}\.(?:png|jpg|webp|avif)$/i.test(value) ||
       /^data:image\/(png|jpeg|webp|avif);base64,/i.test(value),
     "Use a local image path or a supported image."
   );
-const optionalImageSource = z.string().max(2_000_000).refine(
-  (value) => value === "" || value.startsWith("/img/") || /^data:image\/(png|jpeg|webp|avif);base64,/i.test(value),
+const optionalImageSource = z
+  .string()
+  .max(2_000_000)
+  .refine(
+    (value) =>
+      value === "" ||
+      value.startsWith("/img/") ||
+      /^\/admin-media\/project-[a-f0-9-]{36}\.(?:png|jpg|webp|avif)$/i.test(value) ||
+      /^data:image\/(png|jpeg|webp|avif);base64,/i.test(value),
   "Use a local image path or a supported image."
 );
 
@@ -69,7 +77,7 @@ export const siteContentSchema = z.object({
     title: text(100),
     cards: z.array(z.object({
       title: text(120),
-      img: imageSource,
+      img: optionalImageSource,
       description: text(800),
       features: z.array(text(180)).max(20),
       gallery: z.array(imageSource).max(30)

@@ -111,6 +111,7 @@ export default function ProjectModal({ project, isOpen, onClose }: Props) {
                     src={src}
                     alt={`${project.title} - Image ${index + 1}`}
                     fill
+                    unoptimized={src.startsWith("/admin-media/")}
                     sizes="(min-width: 1024px) 280px, (min-width: 768px) 240px, 100vw"
                     className="object-cover hover:scale-105 transition-transform duration-500"
                   />

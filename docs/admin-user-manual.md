@@ -10,7 +10,7 @@ Initial edition · November 2026
 
 ## 1. Sign in
 
-Open the administration address provided by the person who manages the website, followed by `/admin/login`.
+Open [https://www.kingelectrichome.com/admin](https://www.kingelectrichome.com/admin). If needed, it redirects you to the sign-in page.
 
 Enter the administrator username and password you were given. Your session expires automatically after eight hours. Select **Sign out** to end it sooner.
 
@@ -40,17 +40,25 @@ If an error appears, check the fields and save again. Do not close the page whil
 
 ## 4. Images
 
-For an image field, keep the current image, enter a path to an existing website image (for example, `/img/charger.avif`), or upload a replacement. PNG, JPEG, WebP, and AVIF files are supported. Each uploaded file must be smaller than 1.4 MB.
+For existing image fields outside Projects, keep the current image, enter a path to an existing website image (for example, `/img/charger.avif`), or upload a replacement. PNG, JPEG, WebP, and AVIF files are supported. Each uploaded file must be smaller than 1.4 MB.
 
-Resize large photos before uploading. After saving, check the public website to make sure the image looks right.
+### Project cover and gallery photos
+
+1. Open **Projects** and find the project you want to update.
+2. Under **Cover photo**, select **Add cover photo** or **Replace cover**. To remove it, select **Remove cover**.
+3. Under **Project gallery**, select **Add photos** and choose one or more photos. Each thumbnail has its own **Remove** button.
+4. Select **Save changes** and wait for confirmation. Uploaded project photos are resized in the browser and stored on the website server; the project keeps references to them.
+5. Open the public website and check the project card and gallery.
+
+The project uploader accepts PNG, JPEG, WebP, and AVIF source photos up to 10 MB each, then optimizes them to at most 1.2 MB. A project can have up to 30 gallery photos. Uploading alone does not publish the change: select **Save changes**. If you leave before saving, the edited project will not keep the newly uploaded photo. When you save, unreferenced uploaded project images are cleaned up from storage.
 
 ---
 
 ## 5. Your changes are saved
 
-Selecting **Save changes** writes the website content to a JSON file on the server. Leaving the page, signing out, or signing back in does not undo saved edits. Unsaved edits in the form are not kept, so save before leaving.
+Selecting **Save changes** writes the website content to a JSON file on the server. Project photo files are saved next to that JSON in a `project-images` folder. Leaving the page, signing out, or signing back in does not undo saved edits. Unsaved edits in the form are not kept, so save before leaving.
 
-The Docker preview stores that file in the persistent `jesowe-site-content` volume. It remains available after the container restarts or is replaced. On the production host, `ADMIN_CONTENT_PATH` must point to writable persistent storage. A temporary filesystem can lose edits when the hosting platform replaces the application. Ask the administrator to back up the content volume before major server changes.
+The Docker preview stores the JSON and `project-images` directory together in the persistent `jesowe-site-content` volume mounted at `/app/.data`. They remain available after the container restarts or is replaced. On the production host, `ADMIN_CONTENT_PATH` must point to a JSON file on writable persistent storage, and its parent directory must persist too because the images are written to a sibling `project-images` directory. A temporary filesystem can lose text and images when the hosting platform replaces the application. Ask the administrator to back up the entire content directory before major server changes.
 
 ## 6. Helpful tips
 
@@ -69,6 +77,10 @@ Set these environment variables in the hosting provider's environment or secret 
 | `ADMIN_USERNAME` | The chosen administrator username. |
 | `ADMIN_PASSWORD_HASH` | Output from `node scripts/generate-admin-password-hash.mjs`. Use the generated `scrypt:<salt>:<hash>` value; never store the original password here. |
 | `ADMIN_SESSION_SECRET` | A random value from `node -e "console.log(require('node:crypto').randomBytes(48).toString('base64url'))"`. |
-| `ADMIN_CONTENT_PATH` | An absolute file path on writable persistent storage, such as `/app/.data/site-content.json`. |
+| `ADMIN_CONTENT_PATH` | An absolute file path on writable persistent storage, such as `/var/data/site-content.json` when the disk is mounted at `/var/data`. |
+
+The folder containing `ADMIN_CONTENT_PATH` must be persistent and writable by the application process. Project uploads are stored in its `project-images` subdirectory. If production runs multiple application instances, use shared persistent storage for both the JSON file and that image directory so every instance can read the same saved content and photos.
+
+For Render, attach a persistent disk to the web service, mount it at the directory used in `ADMIN_CONTENT_PATH` (for example, `/var/data`), and set the variable to a JSON file inside that directory. Render's default service filesystem is temporary; without a disk, uploaded project photos and saved content can disappear on restart or deploy. Render disks have an additional charge and are limited to one service instance.
 
 Do not commit secrets to GitHub, include them in this guide, or send them in messages. Use HTTPS and back up the persistent content volume.
