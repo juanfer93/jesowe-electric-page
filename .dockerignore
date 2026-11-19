@@ -1,0 +1,12 @@
+.git
+.next
+.pnpm-store
+node_modules
+.data
+.env*
+!.env.example
+Dockerfile*
+compose*.yaml
+compose*.yml
+npm-debug.log*
+pnpm-debug.log*

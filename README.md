@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jesowe Electric
 
-## Getting Started
+Sitio web Next.js para King Electric, con un panel privado para editar el contenido del sitio sin modificar el código.
 
-First, run the development server:
+## Vista previa local con Docker
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Copia `.env.example` a `.env.local` y configura las credenciales locales.
+2. Ejecuta `docker compose up --build -d`.
+3. Abre `http://localhost:3001/admin/login`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Docker Compose guarda el contenido en un volumen llamado `jesowe-site-content`, por lo que sobrevive a reinicios del contenedor. `docker compose down` conserva el volumen. Haz una copia de respaldo antes de eliminar volúmenes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables para producción
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Configura estas variables en el servicio donde se despliegue la aplicación. No subas `.env.local` ni contraseñas al repositorio.
 
-## Learn More
+| Variable | Requerida | Uso |
+| --- | --- | --- |
+| `ADMIN_USERNAME` | Sí | Usuario único de administración. |
+| `ADMIN_PASSWORD_HASH` | Sí | Hash scrypt con formato `scrypt:<salt hexadecimal>:<hash hexadecimal>`. No admite la contraseña en texto claro. |
+| `ADMIN_SESSION_SECRET` | Sí | Secreto aleatorio de al menos 32 caracteres para firmar las sesiones. |
+| `ADMIN_CONTENT_PATH` | Recomendado | Ruta absoluta al archivo JSON dentro de almacenamiento persistente y escribible, por ejemplo `/app/.data/site-content.json`. |
 
-To learn more about Next.js, take a look at the following resources:
+Genera el hash de la contraseña con `node scripts/generate-admin-password-hash.mjs`; el texto de la contraseña no se muestra. Genera `ADMIN_SESSION_SECRET` con `node -e "console.log(require('node:crypto').randomBytes(48).toString('base64url'))"`. Guarda ambos valores directamente en el gestor de variables/secretos del hosting.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+En producción usa HTTPS y almacenamiento persistente para `ADMIN_CONTENT_PATH`. Si la plataforma reemplaza contenedores, el contenido no debe quedar únicamente en el filesystem temporal. La guía del editor está en [`docs/admin-user-manual.md`](docs/admin-user-manual.md).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Alcance del panel
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+El panel permite editar detalles del negocio, navegación, textos, servicios, proyectos, reseñas e imágenes compatibles. Usa las secciones y el diseño ya definidos por el sitio; no modifica el código, el diseño general ni la configuración del servidor. Los cambios guardados aparecen inmediatamente en el sitio público.

@@ -4,25 +4,25 @@ import { useState } from "react";
 import Section from "@/src/app/components/Section";
 import Reveal from "@/src/app/components/Reveal";
 import ProjectModal from "@/src/app/components/ProjectModal";
-import { PROJECTS } from "@/src/app/lib/content";
 import NextImage from "next/image";
+import type { SiteContent } from "@/src/app/lib/siteContentSchema";
 
-type Project = typeof PROJECTS.cards[number];
+type Project = SiteContent["projects"]["cards"][number];
 
-export default function Projects() {
+export default function Projects({ projects }: { projects: SiteContent["projects"] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
     <Section id="projects" className="bg-brand-mist">
       <Reveal>
         <h2 className="text-4xl md:text-6xl font-semibold text-brand-navy text-center">
-          {PROJECTS.title}
+          {projects.title}
         </h2>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3 max-w-5xl mx-auto">
-          {PROJECTS.cards.map((p) => (
+          {projects.cards.map((p, projectIndex) => (
             <button
-              key={p.title}
+              key={`${p.title}-${projectIndex}`}
               type="button"
               onClick={() => setSelectedProject(p)}
               className="group w-full rounded-2xl border border-slate-200 bg-white shadow-soft transition-all hover:-translate-y-1 flex flex-col overflow-hidden text-left h-full"

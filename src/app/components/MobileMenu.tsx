@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { NAV, SITE } from "@/src/app/lib/content";
 import { useUIStore } from "@/src/app/store/uiStore";
+import type { SiteContent } from "@/src/app/lib/siteContentSchema";
 
-export default function MobileMenu() {
+export default function MobileMenu({ site, nav }: { site: SiteContent["site"]; nav: SiteContent["nav"] }) {
   const open = useUIStore((s) => s.mobileMenuOpen);
   const setOpen = useUIStore((s) => s.setMobileMenuOpen);
 
@@ -37,7 +37,7 @@ export default function MobileMenu() {
 
       <div className="h-full w-full flex items-center justify-center">
         <nav className="flex flex-col items-center gap-10">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <span
               key={item.href}
               className="text-3xl md:text-4xl font-light text-slate-200 hover:text-brand-accent transition"
@@ -55,10 +55,10 @@ export default function MobileMenu() {
           ))}
 
           <a
-            href={SITE.phoneTel}
+            href={site.phoneTel}
             className="mt-4 text-brand-accent hover:text-white transition underline underline-offset-8"
           >
-            {SITE.phoneDisplay}
+            {site.phoneDisplay}
           </a>
         </nav>
       </div>

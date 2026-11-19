@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { SITE } from "@/src/app/lib/content";
 import { contactSchema } from "@/src/app/lib/contactSchema";
+import { getSiteContent } from "@/src/app/lib/siteContentStore";
 
 export async function POST(req: Request) {
   const json = await req.json().catch(() => null);
@@ -39,6 +39,8 @@ export async function POST(req: Request) {
     auth: { user, pass }
   });
 
+  const siteContent = await getSiteContent();
+  const SITE = siteContent.site;
   const subject = `New Website Lead - ${SITE.companyName}`;
   const html = `
       <!DOCTYPE html>

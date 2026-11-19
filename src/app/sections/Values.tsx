@@ -1,18 +1,18 @@
 import Section from "@/src/app/components/Section";
 import Reveal from "@/src/app/components/Reveal";
-import { VALUES } from "@/src/app/lib/content";
+import type { SiteContent } from "@/src/app/lib/siteContentSchema";
 
-export default function Values() {
+export default function Values({ values }: { values: SiteContent["values"] }) {
   return (
     <Section id="values">
       <Reveal>
         <h2 className="text-3xl md:text-5xl font-semibold text-slate-900 text-center">
-          {VALUES.title}
+          {values.title}
         </h2>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {VALUES.items.map((v) => (
-            <div key={v.title} className="rounded-2xl border border-slate-200 bg-white shadow-soft p-8">
+          {values.items.map((v, index) => (
+            <div key={`${v.title}-${index}`} className="rounded-2xl border border-slate-200 bg-white shadow-soft p-8">
               <div className="flex items-start gap-4">
                 <span
                   className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-navy/10 text-2xl"

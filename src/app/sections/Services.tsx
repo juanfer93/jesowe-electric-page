@@ -3,20 +3,20 @@
 import Image from "next/image";
 import Section from "@/src/app/components/Section";
 import Reveal from "@/src/app/components/Reveal";
-import { SERVICES } from "@/src/app/lib/content";
+import type { SiteContent } from "@/src/app/lib/siteContentSchema";
 
-export default function Services() {
+export default function Services({ services }: { services: SiteContent["services"] }) {
   return (
     <Section id="services" className="bg-brand-mist">
       <Reveal>
         <h2 className="text-4xl md:text-6xl font-semibold text-brand-navy text-center">
-          {SERVICES.title}
+          {services.title}
         </h2>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3 max-w-5xl mx-auto">
-          {SERVICES.cards.map((service) => (
+          {services.cards.map((service, serviceIndex) => (
             <div
-              key={service.title}
+              key={`${service.title}-${serviceIndex}`}
               className="w-full rounded-2xl border border-slate-200 bg-white shadow-soft flex flex-col overflow-hidden"
             >
               <div className="relative h-48 w-full overflow-hidden bg-slate-100">

@@ -3,14 +3,13 @@
 import Section from "@/src/app/components/Section";
 import Reveal from "@/src/app/components/Reveal";
 import SuccessModal from "@/src/app/components/SuccessModal";
-import { CONTACT, SITE } from "@/src/app/lib/content";
-
 import { useUIStore } from "@/src/app/store/uiStore";
 import { contactSchema, type ContactFormValues } from "@/src/app/lib/contactSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import type { SiteContent } from "@/src/app/lib/siteContentSchema";
 
-export default function Contact() {
+export default function Contact({ contact, site }: { contact: SiteContent["contact"]; site: SiteContent["site"] }) {
   const status = useUIStore((s) => s.contactStatus);
   const errorMsg = useUIStore((s) => s.contactError);
   const setStatus = useUIStore((s) => s.setContactStatus);
@@ -56,10 +55,10 @@ export default function Contact() {
     <Section id="contact">
       <Reveal>
         <h2 className="text-4xl md:text-6xl font-semibold text-brand-navy text-center">
-          {CONTACT.title}
+          {contact.title}
         </h2>
         <p className="mt-6 max-w-4xl mx-auto text-center text-slate-600 text-lg leading-relaxed">
-          {CONTACT.subtitle}
+          {contact.subtitle}
         </p>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
@@ -142,10 +141,10 @@ export default function Contact() {
 
             <div className="mt-8 flex items-center justify-between gap-3">
               <a
-                href={SITE.phoneTel}
+                href={site.phoneTel}
                 className="text-brand-navy font-semibold underline underline-offset-8"
               >
-                {SITE.phoneDisplay}
+                {site.phoneDisplay}
               </a>
               <span className="text-sm text-slate-500">Tap to call</span>
             </div>
@@ -156,7 +155,7 @@ export default function Contact() {
             <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-soft">
               <iframe
                 title="Google Map"
-                src={SITE.mapsEmbedUrl}
+                src={site.mapsEmbedUrl}
                 className="w-full h-[320px]"
                 loading="lazy"
               />
@@ -165,8 +164,8 @@ export default function Contact() {
             <div className="rounded-2xl border border-slate-200 bg-white shadow-soft p-8">
               <h3 className="text-xl font-semibold text-slate-900">Business hours :</h3>
               <ul className="mt-4 space-y-2 text-slate-600">
-                {CONTACT.businessHours.map((h) => (
-                  <li key={h}>{h}</li>
+                {contact.businessHours.map((h, index) => (
+                  <li key={`${h}-${index}`}>{h}</li>
                 ))}
               </ul>
             </div>

@@ -3,12 +3,14 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { NAV, SITE } from "@/src/app/lib/content";
 import { KING_ELECTRIC_LOGO } from "@/src/app/lib/brandAssets";
 import MobileMenu from "./MobileMenu";
 import { useUIStore } from "@/src/app/store/uiStore";
+import type { SiteContent } from "@/src/app/lib/siteContentSchema";
 
-export default function Header() {
+type Props = { site: SiteContent["site"]; nav: SiteContent["nav"] };
+
+export default function Header({ site, nav }: Props) {
   const open = useUIStore((s) => s.mobileMenuOpen);
   const setOpen = useUIStore((s) => s.setMobileMenuOpen);
 
@@ -47,13 +49,13 @@ export default function Header() {
               priority
             />
             <div className="leading-tight">
-              <div className="font-semibold text-white">{SITE.companyName}</div>
-              <div className="text-xs text-brand-accent/90">{SITE.tagline}</div>
+              <div className="font-semibold text-white">{site.companyName}</div>
+              <div className="text-xs text-brand-accent/90">{site.tagline}</div>
             </div>
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            {NAV.map((item) => (
+            {nav.map((item) => (
               <span key={item.href} className="text-sm text-slate-200 hover:text-brand-accent transition">
                 {item.href.startsWith("#") ? (
                   <a href={item.href} onClick={scrollTo(item.href)}>
@@ -68,10 +70,10 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             <a
-              href={SITE.phoneTel}
+              href={site.phoneTel}
               className="hidden sm:inline text-brand-accent font-semibold underline underline-offset-8"
             >
-              {SITE.phoneDisplay}
+              {site.phoneDisplay}
             </a>
 
             <button
@@ -89,7 +91,7 @@ export default function Header() {
         </div>
       </header>
 
-      <MobileMenu />
+      <MobileMenu site={site} nav={nav} />
     </>
   );
 }
