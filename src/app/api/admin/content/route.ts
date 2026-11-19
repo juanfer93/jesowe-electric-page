@@ -3,6 +3,7 @@ import { hasAdminSession, hasValidRequestOrigin } from "@/src/app/lib/adminAuth"
 import { getSiteContent, saveSiteContent } from "@/src/app/lib/siteContentStore";
 import { siteContentSchema } from "@/src/app/lib/siteContentSchema";
 import { removeUnusedAdminProjectImages } from "@/src/app/lib/adminProjectImageStore";
+import { RequestBodyTooLargeError, readJsonWithinLimit } from "@/src/app/lib/requestBody";
 
 export async function GET() {
   if (!(await hasAdminSession())) {
@@ -21,7 +22,13 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  const input = await request.json().catch(() => null);
+  let input: unknown;
+  try {
+    input = await readJsonWithinLimit(request, 64 * 1024 * 1024);
+  } catch (error) {
+    const status = error instanceof RequestBodyTooLargeError ? 413 : 400;
+    return NextResponse.json({ error: status === 413 ? "Request body is too large." : "Content is invalid." }, { status });
+  }
   const parsed = siteContentSchema.safeParse(input);
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message || "Content is invalid." }, { status: 400 });

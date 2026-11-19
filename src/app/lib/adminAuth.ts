@@ -68,7 +68,7 @@ export function isValidAdminSession(token: string | undefined) {
 }
 
 export async function hasAdminSession() {
-  const jar = cookies();
+  const jar = await cookies();
   return isValidAdminSession(jar.get(SESSION_COOKIE)?.value);
 }
 
@@ -98,7 +98,7 @@ export function clearAdminSessionCookie() {
 
 export function hasValidRequestOrigin(request: Request) {
   const originHeader = request.headers.get("origin");
-  if (!originHeader) return true;
+  if (!originHeader) return false;
 
   try {
     const origin = new URL(originHeader);

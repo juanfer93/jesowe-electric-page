@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
-  experimental: {
-    reactCompiler: true
-  }
+  output: "standalone"
 };
 
 export default nextConfig;
